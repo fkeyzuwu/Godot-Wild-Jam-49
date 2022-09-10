@@ -16,7 +16,6 @@ func _process(delta: float) -> void:
 
 func throw_artifact() -> void:
 	_artifact.throw()
-	print("threw artifact")
 
 func _move(delta: float) -> void:
 	var input_vector := Vector2.ZERO
