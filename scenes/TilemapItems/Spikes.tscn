@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/Tiles/2D Pixel Dungeon Asset Pack/items and trap_animation/peaks/my/Spikes17.jpeg" type="Texture" id=1]
+[ext_resource path="res://assets/Tiles/2D Pixel Dungeon Asset Pack/items and trap_animation/peaks/my/Spikes16.jpeg" type="Texture" id=2]
+[ext_resource path="res://assets/Tiles/2D Pixel Dungeon Asset Pack/items and trap_animation/peaks/my/Spikes19.jpeg" type="Texture" id=3]
+[ext_resource path="res://assets/Tiles/2D Pixel Dungeon Asset Pack/items and trap_animation/peaks/my/Spikes18.jpeg" type="Texture" id=4]
+[ext_resource path="res://scenes/TilemapItems/Spikes.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "Ready",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "Spike",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[node name="SpikeTile" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 5 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Ready"
+
+[node name="Spike_colision" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="SpikeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpikeTimer" to="." method="_on_Timer_timeout"]
