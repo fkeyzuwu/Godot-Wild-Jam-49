@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player-Idle1.png-5c703329119ba8ecc5ff5c2dff8ea645.stex"
+path="res://.import/enemy.png-6b2203c402e38acd697818ffb85e8537.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player-Idle1.png"
-dest_files=[ "res://.import/player-Idle1.png-5c703329119ba8ecc5ff5c2dff8ea645.stex" ]
+source_file="res://assets/sprites/enemy.png"
+dest_files=[ "res://.import/enemy.png-6b2203c402e38acd697818ffb85e8537.stex" ]
 
 [params]
 
