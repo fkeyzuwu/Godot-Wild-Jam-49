@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 var velocity := Vector2.ZERO
-var max_speed = 500
-var accelration = 80
-var friction = 900
+var max_speed = 100
+var accelration = 500
+var friction = 750
 
 func _ready() -> void:
 	pass 
@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	
 	if input_vector != Vector2.ZERO:
 		velocity = velocity.move_toward(input_vector * max_speed, accelration * delta)
+		velocity.clamped(max_speed)
 	else:
 		velocity = velocity.move_toward((Vector2.ZERO), friction * delta)
 	
