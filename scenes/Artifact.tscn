@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/sprites/Artifact.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Artifact.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ArtifactEffects/FlameEffect.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PhysicsMaterial" id=3]
 friction = 20.0
@@ -26,13 +27,15 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ArtifactArea" type="Area2D" parent="."]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArtifactArea"]
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_artifact_body_entered"]
+[node name="FlameEffect" parent="." instance=ExtResource( 3 )]
+
+[connection signal="body_entered" from="ArtifactArea" to="." method="_on_artifact_body_entered"]

@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+export
+
 var picked := false
 var hitted_enemy := false
 
