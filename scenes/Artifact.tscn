@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/ArtifactEffects/FlameEffect.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PhysicsMaterial" id=3]
-friction = 20.0
+friction = 0.0
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id=1]
