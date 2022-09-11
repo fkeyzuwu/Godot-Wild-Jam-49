@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Wild Jam 49"
-run/main_scene="res://scenes/Stage.tscn"
+run/main_scene="res://scenes/Stage2.tscn"
 
 [autoload]
 
@@ -119,6 +119,7 @@ mouse_left={
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Artifact"
 2d_physics/layer_4="Tilemap"
+2d_physics/layer_5="EnviromentalTilemap"
 
 [physics]
 
