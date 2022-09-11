@@ -51,6 +51,6 @@ func throw():
 	picked = false
 	
 func _follow_player(delta):
-	if get_node("../Player/ArtifactPosition") != null:
+	if get_node_or_null("../Player/ArtifactPosition") != null:
 		var player_position = get_node("../Player/ArtifactPosition").global_position
 		position = position.linear_interpolate(player_position, delta * FOLLOW_SPEED)
