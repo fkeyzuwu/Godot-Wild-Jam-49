@@ -1,7 +1,7 @@
 extends ArtifactEffect
 
 func activate():
-	print("activated")
+	print("fire")
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
 		if (body is Enemy) or (body is Player):

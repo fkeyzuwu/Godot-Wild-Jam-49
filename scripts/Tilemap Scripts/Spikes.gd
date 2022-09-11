@@ -1,11 +1,11 @@
 extends Area2D
 
-onready var spike_colision = $"%Spike_colision"
+onready var spike_collision = $"%SpikeCollision"
 onready var sprite = $"%Sprite"
 onready var spike_timer = $"%SpikeTimer"
  
 func _ready():
-	spike_colision.set_deferred("disabled", true)
+	spike_collision.set_deferred("disabled", true)
 	z_index= -98
 	sprite.play("Ready")
 	spike_timer.start()
@@ -13,9 +13,9 @@ func _ready():
 
 func _on_Timer_timeout():
 	sprite.play("Spike")
-	spike_colision.set_deferred("disabled", false)
+	spike_collision.set_deferred("disabled", false)
 	yield(sprite, "animation_finished")
-	spike_colision.set_deferred("disabled",  true)
+	spike_collision.set_deferred("disabled",  true)
 	sprite.play("Ready")
 	spike_timer.start()
 
