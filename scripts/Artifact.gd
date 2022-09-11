@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_artifact_body_entered(body: Node) -> void:
 	if body is Enemy:
-		body.take_damage(1)
+		body.take_damage(30)
 		hitted_enemy = true
 		set_deferred("mode", RigidBody2D.MODE_KINEMATIC)
 		
