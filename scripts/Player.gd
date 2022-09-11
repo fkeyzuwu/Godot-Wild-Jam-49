@@ -50,14 +50,16 @@ func take_damage(damage: int):
 	sprite.modulate.a = 0.5
 	health -= damage
 	invincible = true
-	print("health " + var2str(health))
+	
 	if health <= 0:
 		queue_free()
 	else:
 		call_deferred("_toggle_vile_visible", true)
-		var vile = health_viles.get_node("health" + var2str(health + 1))
-		#later change this to do for each vile maybe?
-		vile.call_deferred("_take_damage")
+		
+		while damage > 0:
+			var vile = health_viles.get_node("health" + var2str(health + damage))
+			vile.call_deferred("take_damage")
+			damage -= 1
 		
 		var timer = get_tree().create_timer(invincibility_time, false)
 		yield(timer, "timeout") 
