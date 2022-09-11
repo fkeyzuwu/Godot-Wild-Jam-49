@@ -5,11 +5,11 @@
 [ext_resource path="res://scenes/HealthVile.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 9.00001
-height = 0.0
+radius = 5.99999
+height = 6.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7, 21.5 )
+extents = Vector2( 7, 23.5 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 height = 28.0
