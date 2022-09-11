@@ -109,6 +109,7 @@ mouse_left={
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Artifact"
 2d_physics/layer_4="Tilemap"
+2d_physics/layer_5="EnviromentalTilemap"
 
 [physics]
 

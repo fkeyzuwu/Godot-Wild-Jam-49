@@ -30,7 +30,8 @@ func throw():
 
 func _fly(delta: float):
 	position = position.move_toward(fly_to_pos, delta * FLYING_SPEED)
-	
+
 func _follow_player(delta):
-	var player_position = get_node("../Player/ArtifactPosition").global_position
-	position = position.linear_interpolate(player_position, delta * FOLLOW_SPEED)
+	if get_node("../Player/ArtifactPosition") != null:
+		var player_position = get_node("../Player/ArtifactPosition").global_position
+		position = position.linear_interpolate(player_position, delta * FOLLOW_SPEED)
