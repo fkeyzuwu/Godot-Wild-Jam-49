@@ -41,6 +41,10 @@ _global_script_class_icons={
 config/name="Godot Wild Jam 49"
 run/main_scene="res://scenes/Stage.tscn"
 
+[autoload]
+
+TimeManager="*res://scripts/TimeManager.gd"
+
 [display]
 
 window/size/width=320
