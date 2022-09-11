@@ -120,6 +120,7 @@ mouse_left={
 2d_physics/layer_3="Artifact"
 2d_physics/layer_4="Tilemap"
 2d_physics/layer_5="EnviromentalTilemap"
+2d_physics/layer_6="ArtifactEffects"
 
 [physics]
 

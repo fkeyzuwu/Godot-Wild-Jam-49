@@ -1,16 +1,26 @@
 extends Area2D
+
+onready var spike_colision = $"%Spike_colision"
+onready var sprite = $"%Sprite"
+onready var spike_timer = $"%SpikeTimer"
  
 func _ready():
-	$Spike_colision.set_deferred("disabled", true)
+	spike_colision.set_deferred("disabled", true)
 	z_index= -98
-	$Sprite.play("Ready")
-	$SpikeTimer.start()
+	sprite.play("Ready")
+	spike_timer.start()
 
 
 func _on_Timer_timeout():
-	$Sprite.play("Spike")
-	$Spike_colision.set_deferred("disabled", false)
-	yield($Sprite, "animation_finished")
-	$Spike_colision.set_deferred("disabled",  true)
-	$Sprite.play("Ready")
-	$SpikeTimer.start()
+	sprite.play("Spike")
+	spike_colision.set_deferred("disabled", false)
+	yield(sprite, "animation_finished")
+	spike_colision.set_deferred("disabled",  true)
+	sprite.play("Ready")
+	spike_timer.start()
+
+
+
+func _on_SpikeTile_body_entered(body: Node) -> void:
+	if body is Player:
+		body.take_damage(1)
