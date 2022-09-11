@@ -26,6 +26,7 @@ func _on_artifact_body_entered(body: Node) -> void:
 
 func throw():
 	fly_to_pos = get_global_mouse_position()
+	(get_node("../Player") as Player)._artifact = null
 	picked = false
 
 func _fly(delta: float):
