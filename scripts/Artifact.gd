@@ -1,7 +1,8 @@
 extends RigidBody2D
 
+var rng = RandomNumberGenerator.new()
 var current_effect: ArtifactEffect
-onready var effects = get_tree().get_nodes_in_group("effects")
+onready var effects = get_node("ArtifactEffects").get_children()
 
 var picked := false
 var hitted_enemy := false
@@ -12,6 +13,7 @@ var THROW_SPEED := 900.0
 func _ready() -> void:
 	mode = RigidBody2D.MODE_KINEMATIC
 	TimeManager.effect_timer.connect("timeout", self, "_activate_effect")
+	rng.randomize()
 	_set_random_effect()
 
 func _activate_effect():
@@ -19,7 +21,7 @@ func _activate_effect():
 	_set_random_effect()
 	
 func _set_random_effect():
-	current_effect = effects[randi() % effects.size() - 1]
+	current_effect = effects[rng.randi() % effects.size() - 1]
 
 func _physics_process(delta: float) -> void:
 	if picked or hitted_enemy:
@@ -27,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		
 
 func _on_artifact_body_entered(body: Node) -> void:
-	if body is Enemy:
+	if body is Enemy and !picked:
 		body.take_damage(30)
 		hitted_enemy = true
 		set_deferred("mode", RigidBody2D.MODE_KINEMATIC)
