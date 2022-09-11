@@ -48,7 +48,7 @@ func _on_Area2D_area_entered(area):
 	print("invincibility " +var2str(invincibility))
 	if invincibility == 0:
 		invincibility+=1
-		if area.name != "ArtifactArea" and invincibility==1:
+		if area.name == "SpikeTile" and invincibility==1:
 			print (area.name)
 			$Area2D/CollisionShape2D.set_deferred("disabled", true)
 			$Sprite.modulate.a = 0.5
