@@ -16,6 +16,8 @@ onready var hurtbox_collider = $"%HurtboxCollider"
 onready var sprite = $"%Sprite"
 
 var _artifact: Node2D
+var can_throw := true
+var throw_cooldown := 1
 
 func _ready():
 	_toggle_vile_visible(false)
@@ -27,7 +29,16 @@ func _process(delta: float) -> void:
 		throw_artifact()
 
 func throw_artifact() -> void:
+	if !can_throw:
+		return
+	
+	var throw_timer = get_tree().create_timer(throw_cooldown, false)
+	throw_timer.connect("timeout", self, "set_can_throw")
+	can_throw = false
 	_artifact.throw()
+
+func set_can_throw():
+	can_throw = true
 
 func _move(delta: float) -> void:
 	var input_vector := Vector2.ZERO
