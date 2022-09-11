@@ -1,17 +1,17 @@
-extends KinematicBody2D
+extends RigidBody2D
 
-var fly_to_pos := Vector2.ZERO #change this depending on what target you should go towards
 var picked := false
 var hitted_enemy := false
 
 var FOLLOW_SPEED := 4.0
-var FLYING_SPEED := 200.0
+var THROW_SPEED := 6.5
+
+func _ready() -> void:
+	mode = RigidBody2D.MODE_KINEMATIC
 
 func _physics_process(delta: float) -> void:
 	if picked or hitted_enemy:
 		_follow_player(delta)
-	elif fly_to_pos != Vector2.ZERO:
-		_fly(delta)
 		
 
 func _on_artifact_body_entered(body: Node) -> void:
@@ -20,17 +20,18 @@ func _on_artifact_body_entered(body: Node) -> void:
 		player._artifact = self
 		picked = true
 		hitted_enemy = false
+		set_deferred("mode", RigidBody2D.MODE_CHARACTER)
+		set_deferred("linear_velocity", Vector2.ZERO)
 	elif body is Enemy:
-		fly_to_pos = Vector2.ZERO
 		hitted_enemy = true
+		set_deferred("mode", RigidBody2D.MODE_KINEMATIC)
 
 func throw():
-	fly_to_pos = get_global_mouse_position()
+	var throw_direction = get_global_mouse_position() - global_position
+	set_deferred("mode", RigidBody2D.MODE_CHARACTER)
+	call_deferred("apply_central_impulse", throw_direction * THROW_SPEED)
 	(get_node("../Player") as Player)._artifact = null
 	picked = false
-
-func _fly(delta: float):
-	position = position.move_toward(fly_to_pos, delta * FLYING_SPEED)
 	
 func _follow_player(delta):
 	var player_position = get_node("../Player/ArtifactPosition").global_position
