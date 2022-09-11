@@ -27,16 +27,21 @@ func _physics_process(delta: float) -> void:
 		
 
 func _on_artifact_body_entered(body: Node) -> void:
-	if body is Player:
-		var player = body as Player
+	if body is Enemy:
+		body.take_damage(1)
+		hitted_enemy = true
+		set_deferred("mode", RigidBody2D.MODE_KINEMATIC)
+		
+
+func _on_ArtifactArea_entered(area: Area2D) -> void:
+	if area.name == "ArtifactPickedRange":
+		var player = area.get_parent() as Player
 		player._artifact = self
 		picked = true
 		hitted_enemy = false
 		set_deferred("mode", RigidBody2D.MODE_CHARACTER)
 		set_deferred("linear_velocity", Vector2.ZERO)
-	elif body is Enemy:
-		hitted_enemy = true
-		set_deferred("mode", RigidBody2D.MODE_KINEMATIC)
+		
 
 func throw():
 	var throw_direction = get_global_mouse_position() - global_position

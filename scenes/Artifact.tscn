@@ -38,4 +38,5 @@ texture = ExtResource( 1 )
 
 [node name="FlameEffect" parent="." groups=["effects"] instance=ExtResource( 3 )]
 
+[connection signal="area_entered" from="ArtifactArea" to="." method="_on_ArtifactArea_entered"]
 [connection signal="body_entered" from="ArtifactArea" to="." method="_on_artifact_body_entered"]
