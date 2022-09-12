@@ -12,15 +12,19 @@ var player: Player = preload("res://scenes/Player.tscn").instance()
 var artifact: RigidBody2D = preload("res://scenes/Artifact.tscn").instance()
 
 func _ready() -> void:
-	TimeManager.tilemap_timer.connect("timeout", self, "switch_next_stage")
-	file_names = _get_files(stage_path)
 	rng.randomize()
+	file_names = _get_files(stage_path)
 	
 	current_stage = load_random_stage()
 	next_stage = load_random_stage()
+	next_stage.visible = false
 	
 	current_stage.add_child(player)
+	player.global_position = Vector2(100, 100)
 	current_stage.add_child(artifact)
+	artifact.global_position = Vector2(250, 100)
+	
+	TimeManager.tilemap_timer.connect("timeout", self, "switch_next_stage")
 
 func _get_files(path):
 	var files = []
