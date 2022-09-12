@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Wild Jam 49"
-run/main_scene="res://scenes/Stage1.tscn"
+run/main_scene="res://scenes/Stage3.tscn"
 
 [autoload]
 
