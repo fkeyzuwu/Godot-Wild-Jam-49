@@ -3,6 +3,7 @@ extends ArtifactEffect
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	._ready()
 	rng.randomize()
 
 func activate():

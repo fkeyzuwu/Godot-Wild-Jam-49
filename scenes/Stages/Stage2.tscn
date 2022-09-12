@@ -1,11 +1,8 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/Tiles/2D Pixel Dungeon Asset Pack/items and trap_animation/peaks/my/Spikes19.jpeg" type="Texture" id=1]
 [ext_resource path="res://assets/Tiles/RPG Nature Tileset.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Tilemap Scripts/InteractiveTilemap.gd" type="Script" id=3]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Artifact.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 16, 16, 16, 16, 32, 0, 32 )
@@ -247,14 +244,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 0/shapes = [  ]
 0/z_index = 0
 
-[node name="Stage" type="Node2D"]
-
-[node name="Artifact" parent="." instance=ExtResource( 5 )]
-position = Vector2( 154, 65 )
-
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 70, 58 )
-collision_mask = 26
+[node name="Stage2" type="Node2D"]
 
 [node name="BackgroundTilemap" type="TileMap" parent="."]
 z_index = -99
@@ -272,8 +262,5 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 16
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 262154, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0 )
+tile_data = PoolIntArray( 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 196609, 0, 0, 196610, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 262145, 0, 0, 262160, 0, 0, 262161, 0, 0, 327697, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0 )
 script = ExtResource( 3 )
-
-[node name="Enemy" parent="." instance=ExtResource( 6 )]
-position = Vector2( 229, 71 )

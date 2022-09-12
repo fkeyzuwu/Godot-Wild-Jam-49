@@ -22,4 +22,4 @@ func _ready() -> void:
 	tilemap_timer.connect("timeout", self, "debug", ["tilemap_timer"])
 	
 func debug(timer: String):
-	print(timer + "emited")
+	print(timer + " emited")
