@@ -6,7 +6,6 @@ onready var spike_timer = $"%SpikeTimer"
  
 func _ready():
 	spike_collision.set_deferred("disabled", true)
-	z_index= -98
 	sprite.play("Ready")
 	spike_timer.start()
 

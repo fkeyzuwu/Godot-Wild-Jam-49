@@ -10,8 +10,8 @@
 [ext_resource path="res://assets/Tiles/WaterTiles/water_elec7.jpg" type="Texture" id=8]
 [ext_resource path="res://scripts/Tilemap Scripts/Water.gd" type="Script" id=9]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 8 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 9, 9 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -26,16 +26,17 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 9, 9 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
 
-[node name="WaterTile" type="Area2D"]
+[node name="WaterTile" type="Area2D" groups=["water"]]
 z_index = -98
-collision_layer = 16
+collision_layer = 80
+collision_mask = 67
 script = ExtResource( 9 )
 
-[node name="ElecCollision" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+[node name="WaterCollision" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -43,12 +44,16 @@ animation = "Idle"
 playing = true
 
 [node name="ElecTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
-[node name="WaterArea" type="Area2D" parent="."]
-collision_layer = 64
-collision_mask = 16
+[node name="ElecArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 19
 
-[node name="WaterCollision" type="CollisionShape2D" parent="WaterArea"]
-shape = SubResource( 3 )
+[node name="ElecCollision" type="CollisionShape2D" parent="ElecArea"]
+shape = SubResource( 2 )
 
+[connection signal="body_entered" from="." to="." method="_on_WaterTile_body_entered"]
 [connection signal="timeout" from="ElecTimer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="ElecArea" to="." method="_on_ElecArea_body_entered"]

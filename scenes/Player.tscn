@@ -55,4 +55,11 @@ position = Vector2( -16, -15 )
 position = Vector2( -2, -29 )
 
 [node name="health3" parent="Health_Viles" instance=ExtResource( 3 )]
-position = Vector2( 14, -14 )
+position = Vector2( 14, -15 )
+
+[node name="FeetArea" type="Area2D" parent="."]
+
+[node name="FeetCollider" type="CollisionShape2D" parent="FeetArea"]
+position = Vector2( -2, 18 )
+rotation = -1.57079
+shape = SubResource( 1 )
