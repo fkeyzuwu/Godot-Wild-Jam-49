@@ -2,7 +2,9 @@ extends TileMap
 class_name InteractiveTilemap
 
 export(Dictionary) var TILE_SCENES : = {
-	0: preload("res://scenes/TilemapItems/Spikes.tscn")
+	0: preload("res://scenes/TilemapItems/Spikes.tscn"),
+	1: preload("res://scenes/TilemapItems/Water.tscn"),
+	2: preload("res://scenes/TilemapItems/MetalTile.tscn")
 }
 
 onready var half_cell_size = cell_size * 0.5
@@ -32,3 +34,4 @@ func _replace_tiles_with_object(tile_pos: Vector2, object_scene: PackedScene, pa
 		
 		parent.add_child(obj)
 		obj.global_position = ob_pos 
+		obj.z_index = -98

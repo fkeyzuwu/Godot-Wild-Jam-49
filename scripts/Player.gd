@@ -8,12 +8,19 @@ var friction = 750
 
 var health = 3
 export var invincibility_time = 2
+export var on_fire_time = 7
+export var electric_speed_timer= 5
+export var electric_speed_multiplier = 1.2
+
 var invincible := false
+var fire = false
 onready var health_viles = $"%Health_Viles"
 
 onready var hurtbox_collider = $"%HurtboxCollider"
 
 onready var sprite = $"%Sprite"
+
+onready var feet_area = $FeetArea
 
 var _artifact: Node2D
 var can_throw := true
@@ -52,7 +59,7 @@ func _move(delta: float) -> void:
 		velocity = velocity.move_toward((Vector2.ZERO), friction * delta)
 	
 	velocity = 	move_and_slide(velocity)
-	
+
 func take_damage(damage: int):
 	if(invincible):
 		return
@@ -79,9 +86,42 @@ func take_damage(damage: int):
 		sprite.modulate.a = 1
 		_toggle_vile_visible(false)
 		invincible = false
-	
+
+func on_fire(damage:int):
+	if not invincible:
+		fire = true
+		var timer = get_tree().create_timer(on_fire_time, false)
+		yield(timer, "timeout")
+		if is_on("water"):
+			fire = false
+		while fire: 
+			print("toasty")
+			take_damage(damage)
+			timer = get_tree().create_timer(on_fire_time, false)
+			yield(timer, "timeout")
+			if is_on("water"):
+				fire = false
+
+func electrocute_player(damage):
+	if is_on("metal"):
+		max_speed*= electric_speed_multiplier
+		accelration*= electric_speed_multiplier
+		var timer = get_tree().create_timer(electric_speed_timer, false)
+		yield(timer, "timeout")
+		max_speed*= (1/electric_speed_multiplier)
+		accelration*= (1/electric_speed_multiplier)
+	else:
+		take_damage(damage)
+
+func is_on(group_name:String) -> bool:
+	var areas = feet_area.get_overlapping_areas()
+	for area in areas:
+		if area.is_in_group(group_name):
+			print("Im on: " +group_name)
+			fire = false
+			return true
+	return false
 
 func _toggle_vile_visible(state: bool):
 	for vile in health_viles.get_children():
 		vile.visible = state
-

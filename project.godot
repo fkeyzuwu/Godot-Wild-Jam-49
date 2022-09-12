@@ -12,7 +12,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "ArtifactEffect",
 "language": "GDScript",
-"path": "res://scripts/ArtifactEffect.gd"
+"path": "res://scripts/Artifact Effects/ArtifactEffect.gd"
+}, {
+"base": "ArtifactEffect",
+"class": "ElectricEffect",
+"language": "GDScript",
+"path": "res://scripts/ElectricEffect.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
@@ -28,12 +33,19 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
+}, {
+"base": "Area2D",
+"class": "WaterTile",
+"language": "GDScript",
+"path": "res://scripts/Tilemap Scripts/Water.gd"
 } ]
 _global_script_class_icons={
 "ArtifactEffect": "",
+"ElectricEffect": "",
 "Enemy": "",
 "InteractiveTilemap": "",
-"Player": ""
+"Player": "",
+"WaterTile": ""
 }
 
 [application]
@@ -121,6 +133,7 @@ mouse_left={
 2d_physics/layer_4="Tilemap"
 2d_physics/layer_5="EnviromentalTilemap"
 2d_physics/layer_6="ArtifactEffects"
+2d_physics/layer_7="Water"
 
 [physics]
 

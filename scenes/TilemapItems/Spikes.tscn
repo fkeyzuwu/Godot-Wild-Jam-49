@@ -31,7 +31,7 @@ unique_name_in_owner = true
 frames = SubResource( 1 )
 animation = "Ready"
 
-[node name="Spike_colision" type="CollisionShape2D" parent="."]
+[node name="SpikeCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource( 2 )
 
