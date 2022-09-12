@@ -4,6 +4,7 @@ var file_names = []
 var stage_path = "res://scenes/Stages/"
 var current_stage: Node2D
 var next_stage: Node2D
+var last_index_file = -1
 
 var rng  = RandomNumberGenerator.new()
 
@@ -39,7 +40,11 @@ func _get_files(path):
 	return files
 	
 func load_random_stage() -> Node2D:
-	var scene = load(stage_path + file_names[rng.randi() % file_names.size() - 1])
+	var index = rng.randi() % file_names.size() - 1
+	if index == last_index_file: #dont load the same scene twice
+		return load_random_stage()
+	var scene = load(stage_path + file_names[index])
+	last_index_file = index
 	var stage = scene.instance()
 	add_child(stage)
 	return stage
