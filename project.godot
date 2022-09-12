@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "ArtifactEffect",
 "class": "ElectricEffect",
 "language": "GDScript",
-"path": "res://scripts/ElectricEffect.gd"
+"path": "res://scripts/Artifact Effects/ElectricEffect.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
@@ -133,7 +133,6 @@ mouse_left={
 2d_physics/layer_4="Tilemap"
 2d_physics/layer_5="EnviromentalTilemap"
 2d_physics/layer_6="ArtifactEffects"
-2d_physics/layer_7="Water"
 
 [physics]
 
