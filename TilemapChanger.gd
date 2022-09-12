@@ -10,6 +10,7 @@ var rng  = RandomNumberGenerator.new()
 
 var player: Player = preload("res://scenes/Player.tscn").instance()
 var artifact: RigidBody2D = preload("res://scenes/Artifact.tscn").instance()
+var enemy: Enemy = preload("res://scenes/Enemy.tscn").instance()
 
 func _ready() -> void:
 	rng.randomize()
@@ -23,6 +24,8 @@ func _ready() -> void:
 	player.global_position = Vector2(100, 100)
 	current_stage.add_child(artifact)
 	artifact.global_position = Vector2(250, 100)
+	current_stage.add_child(enemy)
+	enemy.global_position = Vector2(260, 130)
 	
 	TimeManager.tilemap_timer.connect("timeout", self, "switch_next_stage")
 
