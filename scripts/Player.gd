@@ -118,7 +118,6 @@ func is_on(group_name:String) -> bool:
 	for area in areas:
 		if area.is_in_group(group_name):
 			print("Im on: " +group_name)
-			fire = false
 			return true
 	return false
 
