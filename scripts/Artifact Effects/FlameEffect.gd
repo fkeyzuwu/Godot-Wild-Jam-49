@@ -4,7 +4,8 @@ export var damage = 2
 
 func _ready() -> void:
 	._ready()
-	color = Color(1, 0, 0)
+	color = Color(1, 0.270588, 0.301961)
+	animation = "Flame_Buildup"
 
 func activate():
 	print("fire")

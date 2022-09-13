@@ -6,7 +6,8 @@ export var damage = 2
 
 func _ready() -> void:
 	._ready()
-	color = Color(1, 1, 0)
+	color = Color(0.980392, 1, 0.301961)
+	animation = "Electric_Buildup"
 
 func activate():
 	print("electric")

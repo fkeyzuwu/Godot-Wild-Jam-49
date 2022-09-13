@@ -4,7 +4,8 @@ var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	._ready()
-	color = Color(0.45, 0, 1)
+	color = Color(0.690196, 0.54902, 1)
+	animation = "Teleport_Buildup"
 	rng.randomize()
 
 func activate():
