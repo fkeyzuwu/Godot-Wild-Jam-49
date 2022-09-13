@@ -34,4 +34,4 @@ func _replace_tiles_with_object(tile_pos: Vector2, object_scene: PackedScene, pa
 		
 		parent.add_child(obj)
 		obj.global_position = ob_pos 
-		obj.z_index = -98
+		obj.z_index = -1

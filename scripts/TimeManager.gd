@@ -3,7 +3,7 @@ extends Node
 onready var effect_timer: Timer
 onready var tilemap_timer: Timer
 
-var time_for_event := 4.0 # make this faster over time
+var time_for_event := 6.0 # make this faster over time
 
 func _ready() -> void:
 	effect_timer = Timer.new()
