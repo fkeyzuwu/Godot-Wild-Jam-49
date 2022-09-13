@@ -5,6 +5,7 @@ var stage_path = "res://scenes/Stages/"
 var current_stage: Node2D
 var next_stage: Node2D
 var last_index_file = -1
+var stage_spawn_pos = Vector2(0, 180)
 
 var rng  = RandomNumberGenerator.new()
 
@@ -18,7 +19,8 @@ func _ready() -> void:
 	
 	current_stage = load_random_stage()
 	next_stage = load_random_stage()
-	next_stage.visible = false
+	yield(get_tree(),"idle_frame")
+	next_stage.global_position = stage_spawn_pos
 	
 	current_stage.add_child(player)
 	player.global_position = Vector2(100, 100)
@@ -58,14 +60,13 @@ func load_random_stage() -> Node2D:
 	
 	
 func switch_next_stage():
-	current_stage.queue_free()
-	next_stage.visible = true
-	
+	next_stage.global_position = Vector2.ZERO
 	_move_children()
-	
+	current_stage.queue_free()
 	current_stage = next_stage
 	next_stage = load_random_stage()
-	next_stage.visible = false
+	yield(get_tree(),"idle_frame")
+	next_stage.global_position = stage_spawn_pos
 
 func _move_children():
 	_move_child(player)
