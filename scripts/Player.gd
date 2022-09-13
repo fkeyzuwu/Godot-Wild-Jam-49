@@ -59,10 +59,13 @@ func _move(delta: float) -> void:
 		velocity = velocity.move_toward((Vector2.ZERO), friction * delta)
 	
 	velocity = 	move_and_slide(velocity)
+	
 
-func take_damage(damage: int):
+func take_damage(damage: int, hitter: String):
 	if(invincible):
 		return
+		
+	print("took damage by " +  hitter)
 	
 	hurtbox_collider.set_deferred("disabled", true)
 	sprite.modulate.a = 0.5
@@ -96,13 +99,14 @@ func on_fire(damage:int):
 			fire = false
 		while fire: 
 			print("toasty")
-			take_damage(damage)
+			take_damage(damage, "fire")
 			timer = get_tree().create_timer(on_fire_time, false)
 			yield(timer, "timeout")
 			if is_on("water"):
 				fire = false
 
 func electrocute_player(damage):
+	print("electrocute")
 	if is_on("metal"):
 		max_speed*= electric_speed_multiplier
 		accelration*= electric_speed_multiplier
@@ -111,7 +115,7 @@ func electrocute_player(damage):
 		max_speed*= (1/electric_speed_multiplier)
 		accelration*= (1/electric_speed_multiplier)
 	else:
-		take_damage(damage)
+		take_damage(damage, "electric")
 
 func is_on(group_name:String) -> bool:
 	var areas = feet_area.get_overlapping_areas()

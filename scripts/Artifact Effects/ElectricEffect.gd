@@ -4,6 +4,10 @@ class_name ElectricEffect
 var timer
 export var damage = 2
 
+func _ready() -> void:
+	._ready()
+	color = Color(1, 1, 0)
+
 func activate():
 	print("electric")
 	var areas = get_overlapping_areas()

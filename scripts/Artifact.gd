@@ -3,6 +3,7 @@ extends RigidBody2D
 var rng = RandomNumberGenerator.new()
 var current_effect: ArtifactEffect
 onready var effects = get_node("ArtifactEffects").get_children()
+onready var sprite = $Sprite
 
 var picked := false
 var hitted_enemy := false
@@ -18,6 +19,7 @@ func _ready() -> void:
 
 func _activate_effect():
 	current_effect.activate()
+	sprite.modulate = current_effect.color
 	_set_random_effect()
 	
 func _set_random_effect():

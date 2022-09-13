@@ -4,6 +4,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	._ready()
+	color = Color(0.45, 0, 1)
 	rng.randomize()
 
 func activate():
