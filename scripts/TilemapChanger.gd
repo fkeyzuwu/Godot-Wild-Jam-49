@@ -31,7 +31,6 @@ func _ready() -> void:
 	
 	TimeManager.tilemap_timer.connect("timeout", self, "switch_next_stage")
 
-
 	
 func load_random_stage() -> Node2D:
 	var index = rng.randi() % file_names.size() - 1
@@ -41,7 +40,6 @@ func load_random_stage() -> Node2D:
 	last_index_file = index
 	var stage = scene.instance()
 	add_child(stage)
-	stage.z_index = 1
 	return stage
 
 
@@ -54,7 +52,6 @@ func switch_next_stage():
 	_move_children()
 	
 	current_stage = next_stage
-	current_stage.z_index = 1
 	next_stage = load_random_stage()
 	next_stage_setup.setup()
 

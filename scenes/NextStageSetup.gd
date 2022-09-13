@@ -20,7 +20,6 @@ func screenshot_next_stage():
 
 func tween_screenshot():
 	screenshot.global_position = stage_spawn_pos
-	screenshot.z_index = 2
 	screenshot.modulate.a = 0
 	
 	var tween = create_tween().set_parallel()
