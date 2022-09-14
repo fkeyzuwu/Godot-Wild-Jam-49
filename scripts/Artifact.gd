@@ -6,7 +6,8 @@ onready var effects = get_node("ArtifactEffects").get_children()
 var last_effect_index = -1
 
 onready var sprite = $Sprite
-onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var color_anim_player: AnimationPlayer = $ColorAnimationPlayer
+onready var sprite_anim_player: AnimationPlayer = $SpriteAnimationPlayer
 
 var picked := false
 var hitted_enemy := false
@@ -19,6 +20,8 @@ func _ready() -> void:
 	TimeManager.effect_timer.connect("timeout", self, "_activate_effect")
 	rng.randomize()
 	_set_random_effect()
+	sprite_anim_player.play("ShakeAndBlowup")
+	sprite_anim_player.advance(2.0)
 
 func _activate_effect():
 	current_effect.activate()
@@ -31,8 +34,8 @@ func _set_random_effect():
 	current_effect = effects[random_index]
 	last_effect_index = random_index
 	
-	animation_player.stop()
-	animation_player.play(current_effect.animation)
+	color_anim_player.stop()
+	color_anim_player.play(current_effect.animation)
 	
 
 func _physics_process(delta: float) -> void:
