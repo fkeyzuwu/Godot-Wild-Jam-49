@@ -3,6 +3,7 @@ extends RigidBody2D
 var rng = RandomNumberGenerator.new()
 var current_effect: ArtifactEffect
 onready var effects = get_node("ArtifactEffects").get_children()
+var last_effect_index = -1
 
 onready var sprite = $Sprite
 onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -24,7 +25,12 @@ func _activate_effect():
 	_set_random_effect()
 	
 func _set_random_effect():
-	current_effect = effects[rng.randi() % effects.size() - 1]
+	var random_index = rng.randi() % effects.size() - 1
+	while random_index == last_effect_index:
+		random_index = rng.randi() % effects.size() - 1
+	current_effect = effects[random_index]
+	last_effect_index = random_index
+	
 	animation_player.stop()
 	animation_player.play(current_effect.animation)
 	

@@ -49,11 +49,12 @@ func _get_files(path):
 	return files
 	
 func load_random_stage() -> Node2D:
-	var index = rng.randi() % file_names.size() - 1
-	if index == last_index_file: #dont load the same scene twice
-		return load_random_stage()
-	var scene = load(stage_path + file_names[index])
-	last_index_file = index
+	var random_index = rng.randi() % file_names.size() - 1
+	while random_index == last_index_file: #dont load the same scene twice
+		random_index = rng.randi() % file_names.size() - 1
+	var scene = load(stage_path + file_names[random_index])
+	last_index_file = random_index
+	
 	var stage = scene.instance()
 	add_child(stage)
 	return stage
