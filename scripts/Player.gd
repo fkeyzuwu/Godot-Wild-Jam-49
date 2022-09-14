@@ -2,9 +2,9 @@ extends KinematicBody2D
 class_name Player
 
 var velocity := Vector2.ZERO
-var max_speed = 100
-var accelration = 500
-var friction = 750
+export var max_speed = 100
+export var acceleration = 500
+export var friction = 750
 
 var health = 3
 export var invincibility_time = 2
@@ -54,7 +54,7 @@ func _move(delta: float) -> void:
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		velocity = velocity.move_toward(input_vector * max_speed, accelration * delta)
+		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
 	else:
 		velocity = velocity.move_toward((Vector2.ZERO), friction * delta)
 	
@@ -109,11 +109,11 @@ func electrocute_player(damage):
 	print("electrocute")
 	if is_on("metal"):
 		max_speed*= electric_speed_multiplier
-		accelration*= electric_speed_multiplier
+		acceleration*= electric_speed_multiplier
 		var timer = get_tree().create_timer(electric_speed_timer, false)
 		yield(timer, "timeout")
 		max_speed*= (1/electric_speed_multiplier)
-		accelration*= (1/electric_speed_multiplier)
+		acceleration*= (1/electric_speed_multiplier)
 	else:
 		take_damage(damage, "electric")
 

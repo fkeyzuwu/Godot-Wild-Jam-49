@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/TileSets/16x16_navpoly.tres" type="NavigationPolygon" id=1]
+
+[node name="NaviTile" type="NavigationPolygonInstance"]
+navpoly = ExtResource( 1 )

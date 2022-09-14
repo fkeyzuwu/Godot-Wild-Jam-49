@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Tiles/BoxTiles/MetalBox24.png" type="Texture" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.99743
+height = 6.0077
+
+[node name="MetalboxTile" type="StaticBody2D" groups=["box"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 5 )
+rotation = 1.57208
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -3 )
+texture = ExtResource( 1 )
