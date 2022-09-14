@@ -6,7 +6,8 @@ export(Dictionary) var TILE_SCENES : = {
 	1: preload("res://scenes/TilemapItems/Water.tscn"),
 	2: preload("res://scenes/TilemapItems/MetalTile.tscn"),
 	3: preload("res://scenes/TilemapItems/WoodboxTile.tscn"),
-	4: preload("res://scenes/TilemapItems/MetalboxTile.tscn")
+	4: preload("res://scenes/TilemapItems/MetalboxTile.tscn"),
+	5: preload("res://scenes/TilemapItems/NaviTile.tscn")
 }
 
 onready var half_cell_size = cell_size * 0.5

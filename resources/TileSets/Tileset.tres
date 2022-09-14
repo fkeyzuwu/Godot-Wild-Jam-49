@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=10 format=2]
+[gd_resource type="TileSet" load_steps=11 format=2]
 
 [ext_resource path="res://assets/Tiles/2D Pixel Dungeon Asset Pack/items and trap_animation/peaks/my/Spikes19.jpeg" type="Texture" id=1]
 [ext_resource path="res://assets/Tiles/WaterTiles/tileset_water.png" type="Texture" id=2]
 [ext_resource path="res://assets/Tiles/MetalTile/Metal16-export.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/Tiles/BoxTiles/WoodBox16.png" type="Texture" id=4]
 [ext_resource path="res://assets/Tiles/BoxTiles/MetalBox16.png" type="Texture" id=5]
+[ext_resource path="res://assets/Tiles/navtile/trans_navi16.png" type="Texture" id=6]
 
 [sub_resource type="NavigationPolygon" id=5]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -21,7 +22,7 @@ vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 ) ]
 
-[sub_resource type="NavigationPolygon" id=4]
+[sub_resource type="NavigationPolygon" id=8]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 ) ]
@@ -100,15 +101,15 @@ outlines = [ PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 ) ]
 4/shape_one_way_margin = 0.0
 4/shapes = [  ]
 4/z_index = 0
-5/name = "tileset_water.png 5"
-5/texture = ExtResource( 2 )
+5/name = "trans_navi16.png 5"
+5/texture = ExtResource( 6 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 128, 0, 16, 16 )
+5/region = Rect2( 0, 0, 16, 16 )
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/navigation = SubResource( 4 )
+5/navigation = SubResource( 8 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 5/shape_one_way = false
