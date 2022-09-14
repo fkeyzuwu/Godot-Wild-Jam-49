@@ -2,5 +2,7 @@
 
 [ext_resource path="res://resources/TileSets/16x16_navpoly.tres" type="NavigationPolygon" id=1]
 
-[node name="NaviTile" type="NavigationPolygonInstance"]
+[node name="NaviTile" type="Node2D"]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 navpoly = ExtResource( 1 )

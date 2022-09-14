@@ -42,11 +42,10 @@ func _replace_tiles_with_object(tile_pos: Vector2, object_scene: PackedScene, pa
 		if nav_poly != null:
 			nav_poly.enabled = false
 			nav_poly.enabled = true
-			Navigation2DServer.agent_set_map(nav_poly.navpoly.get_rid(), get_world_2d().navigation_map)
+			#Navigation2DServer.agent_set_map(nav_poly.navpoly.get_rid(), get_world_2d().navigation_map)
 		#box colliders are stupid and mess with nav so I added a position shift
 		if obj.is_in_group("box"):
 			obj.global_position.y -= 4
-			if obj.is_in_group("breakable"):
-				nav_poly.enabled = false
-				Navigation2DServer.agent_set_map(nav_poly.navpoly.get_rid(), get_world_2d().navigation_map)
+			nav_poly.enabled = false
+			#Navigation2DServer.agent_set_map(nav_poly.navpoly.get_rid(), get_world_2d().navigation_map)
 		#obj.z_index = -98

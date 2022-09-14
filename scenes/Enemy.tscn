@@ -28,8 +28,4 @@ shape = SubResource( 2 )
 avoidance_enabled = true
 neighbor_dist = 20.0
 
-[node name="Line2D" type="Line2D" parent="."]
-width = 5.0
-default_color = Color( 1, 1, 1, 0.305882 )
-
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_velocity_computed"]

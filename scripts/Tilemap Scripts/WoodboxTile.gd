@@ -16,7 +16,7 @@ func take_damage(damage):
 		box_collision.set_deferred("disabled", true)
 		sprite.visible = false
 		nav_poly.enabled = true
-		Navigation2DServer.agent_set_map(nav_poly.navpoly.get_rid(), get_world_2d().navigation_map)
+		#Navigation2DServer.agent_set_map(nav_poly.navpoly.get_rid(), get_world_2d().navigation_map)
 	
 
 func on_fire(damage):

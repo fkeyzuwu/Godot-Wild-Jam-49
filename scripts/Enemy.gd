@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name Enemy
 
 onready var navi_agent = $NavigationAgent2D
-onready var line = $Line2D
 onready var player = get_parent().get_node("Player")
 var did_arrive = false
 
@@ -61,7 +60,10 @@ func is_on(group_name:String) -> bool:
 
 
 func get_player_location():
-	return player.global_position
+	if is_instance_valid(player):
+		return player.global_position
+	else:
+		return global_position
 
 func _on_NavigationAgent2D_velocity_computed(safe_velocity):
 	if not arrived_at_location():
