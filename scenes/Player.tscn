@@ -20,6 +20,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 unique_name_in_owner = true
+position = Vector2( 0, 3.8147e-06 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 
