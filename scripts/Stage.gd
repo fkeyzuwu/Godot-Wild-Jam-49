@@ -19,4 +19,4 @@ func get_spawn_points() -> Array:
 	return points
 	
 func get_random_spawn_point():
-	return enemy_spawn_points[rng.randi % enemy_spawn_points.size - 1]
+	return enemy_spawn_points[rng.randi() % enemy_spawn_points.size() - 1]
