@@ -13,3 +13,4 @@ func activate():
 	for area in areas:
 		if (area.name == "Hurtbox" or area.name == "WoodBoxHurtbox"):
 			area.get_parent().on_fire(damage)
+

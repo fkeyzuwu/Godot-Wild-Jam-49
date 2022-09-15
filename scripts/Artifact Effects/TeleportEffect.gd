@@ -8,13 +8,13 @@ func _ready() -> void:
 	animation = "Teleport_Buildup"
 	rng.randomize()
 
-func activate():
-	var bodies = get_overlapping_bodies()
-	var random_position = _get_random_position()
-	for body in bodies:
-		if (body is Enemy) or (body is Player) or (body.name == "Artifact"):
-			body.global_position = random_position
-			print(str(body) + " teleported")
+#func activate():
+#	var bodies = get_overlapping_bodies()
+#	var random_position = _get_random_position()
+#	for body in bodies:
+#		if (body is Enemy) or (body is Player) or (body.name == "Artifact"):
+#			body.global_position = random_position
+#			print(str(body) + " teleported")
 
 func _get_random_position() -> Vector2:
 	var world = get_tree().current_scene
