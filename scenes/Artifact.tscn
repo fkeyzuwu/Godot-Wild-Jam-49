@@ -522,5 +522,7 @@ anims/ShakeAndBlowup = SubResource( 12 )
 anims/Teleport_Buildup = SubResource( 11 )
 script = ExtResource( 6 )
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="area_entered" from="ArtifactArea" to="." method="_on_ArtifactArea_entered"]
 [connection signal="body_entered" from="ArtifactArea" to="." method="_on_artifact_body_entered"]

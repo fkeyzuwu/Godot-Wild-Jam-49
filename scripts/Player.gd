@@ -22,12 +22,18 @@ onready var sprite = $"%Sprite"
 
 onready var feet_area = $FeetArea
 
+onready var camera = $Camera2D
+
 var _artifact: Node2D
 var can_throw := true
 var throw_cooldown := 1
 
 func _ready():
 	_toggle_vile_visible(false)
+	camera.limit_left
+	camera.limit_right
+	camera.limit_top 
+	camera.limit_bottom
 
 func _process(delta: float) -> void:
 	_move(delta)

@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/sprites/enemy.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 6.0
 height = 0.0
 
 [sub_resource type="CircleShape2D" id=2]
@@ -26,6 +27,5 @@ shape = SubResource( 2 )
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-neighbor_dist = 20.0
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_velocity_computed"]
