@@ -4,7 +4,7 @@ var amplitude = 0
 var shake_interval = 0.05
 onready var sprite = get_parent().get_node("Sprite")
 onready var build_up_timer = Timer.new()
-onready var build_down_timer =Timer.new()
+onready var build_down_timer = Timer.new()
 
 func _ready() -> void:
 	build_up_timer.one_shot = false
@@ -40,10 +40,14 @@ func shake_build_up():
 	tween.tween_property(sprite, "position", rand, shake_interval)
 	
 func shake_build_down():
+	if amplitude <= 0:
+		amplitude = 0
+		return
+		
 	var rand = Vector2()
 	rand.x = rand_range(-amplitude, amplitude)
 	rand.y = rand_range(-amplitude, amplitude)
-	amplitude -= 0.1
+	amplitude -= 0.15
 	var tween = create_tween()
 	tween.tween_property(sprite, "position", rand, shake_interval * 3)
 

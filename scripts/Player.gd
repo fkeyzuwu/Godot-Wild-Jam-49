@@ -26,6 +26,8 @@ var _artifact: Node2D
 var can_throw := true
 var throw_cooldown := 1
 
+signal on_player_death
+
 func _ready():
 	_toggle_vile_visible(false)
 
@@ -73,7 +75,7 @@ func take_damage(damage: int, hitter: String):
 	invincible = true
 	
 	if health <= 0:
-		queue_free()
+		die()
 	else:
 		call_deferred("_toggle_vile_visible", true)
 		
@@ -89,6 +91,10 @@ func take_damage(damage: int, hitter: String):
 		sprite.modulate.a = 1
 		_toggle_vile_visible(false)
 		invincible = false
+
+func die():
+	emit_signal("on_player_death")
+	queue_free()
 
 func on_fire(damage:int):
 	if not invincible:

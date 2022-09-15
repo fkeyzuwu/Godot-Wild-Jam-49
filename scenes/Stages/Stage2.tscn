@@ -13,6 +13,14 @@ script = ExtResource( 4 )
 position = Vector2( 233, 106 )
 script = ExtResource( 5 )
 
+[node name="SpawnPoint2" type="Position2D" parent="."]
+position = Vector2( 91, 98 )
+script = ExtResource( 5 )
+
+[node name="SpawnPoint3" type="Position2D" parent="."]
+position = Vector2( 185, 37 )
+script = ExtResource( 5 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="BackgroundTilemap" type="TileMap" parent="YSort"]

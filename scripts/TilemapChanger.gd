@@ -25,11 +25,13 @@ func _ready() -> void:
 	
 	current_stage.add_child(player)
 	player.global_position = Vector2(100, 100)
+	player.connect("on_player_death", self, "game_over")
 	current_stage.add_child(artifact)
-	artifact.global_position = Vector2(250, 100)
+	artifact.global_position = Vector2(200, 100)
 	
 	TimeManager.tilemap_timer.connect("timeout", self, "switch_next_stage")
 
+	
 func _get_files(path):
 	var files = []
 	var dir = Directory.new()
@@ -84,3 +86,7 @@ func _move_child(child: Node2D):
 	current_stage.remove_child(child)
 	next_stage.add_child(child)
 	child.global_position = child_position
+
+
+func game_over():
+	TimeManager.tilemap_timer.disconnect("timeout", self, "switch_next_stage")
