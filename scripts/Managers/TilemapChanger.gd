@@ -10,9 +10,9 @@ var stage_spawn_pos = Vector2(0, 180)
 
 var rng  = RandomNumberGenerator.new()
 
-var player: Player = preload("res://scenes/Player.tscn").instance()
-var artifact: RigidBody2D = preload("res://scenes/Artifact.tscn").instance()
-var enemy: Enemy = preload("res://scenes/Enemy.tscn").instance()
+var player: Player = preload("res://scenes/Entities/Player.tscn").instance()
+var artifact: RigidBody2D = preload("res://scenes/Entities/Artifact.tscn").instance()
+var enemy: Enemy = preload("res://scenes/Entities/Enemy.tscn").instance()
 
 func _ready() -> void:
 	rng.randomize()

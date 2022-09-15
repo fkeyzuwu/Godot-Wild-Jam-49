@@ -22,12 +22,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://scripts/Enemy.gd"
+"path": "res://scripts/Entities/Enemy.gd"
 }, {
 "base": "Node2D",
 "class": "GameWorld",
 "language": "GDScript",
-"path": "res://scripts/TilemapChanger.gd"
+"path": "res://scripts/Managers/TilemapChanger.gd"
 }, {
 "base": "TileMap",
 "class": "InteractiveTilemap",
@@ -37,17 +37,17 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://scripts/Player.gd"
+"path": "res://scripts/Entities/Player.gd"
 }, {
 "base": "Position2D",
 "class": "SpawnPoint",
 "language": "GDScript",
-"path": "res://scenes/SpawnPoint.gd"
+"path": "res://scripts/Stages/SpawnPoint.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "Stage",
 "language": "GDScript",
-"path": "res://scripts/Stage.gd"
+"path": "res://scripts/Stages/Stage.gd"
 }, {
 "base": "Area2D",
 "class": "WaterTile",
@@ -69,11 +69,11 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Wild Jam 49"
-run/main_scene="res://scenes/World.tscn"
+run/main_scene="res://scenes/Managers/World.tscn"
 
 [autoload]
 
-TimeManager="*res://scripts/TimeManager.gd"
+TimeManager="*res://scripts/Managers/TimeManager.gd"
 
 [display]
 

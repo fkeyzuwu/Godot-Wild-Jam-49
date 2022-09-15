@@ -1,10 +1,11 @@
-extends Node
+extends Node2D
 class_name Stage
 
 var enemy_spawn_points = []
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	rng.randomize()
 	enemy_spawn_points = get_spawn_points()
 
 

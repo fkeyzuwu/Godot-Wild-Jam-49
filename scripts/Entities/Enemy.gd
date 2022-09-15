@@ -10,7 +10,7 @@ var velocity : Vector2
 export var max_speed = 50
 export var acceleration = 500
 
-export var health := 500
+export var health := 30
 export var on_fire_time = 12
 var fire = false
 

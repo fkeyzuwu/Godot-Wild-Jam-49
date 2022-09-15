@@ -1,7 +1,7 @@
 extends Node
 
-onready var world: GameWorld = get_parent()
-onready var enemy_scene = preload("res://scenes/Enemy.tscn")
+onready var world = get_parent() as GameWorld
+onready var enemy_scene = preload("res://scenes/Entities/Enemy.tscn")
 
 var enemies = []
 var max_enemies := 3

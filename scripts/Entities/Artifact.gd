@@ -10,7 +10,6 @@ onready var color_anim_player: AnimationPlayer = $ColorAnimationPlayer
 onready var sprite_anim_player: AnimationPlayer = $SpriteAnimationPlayer
 onready var audio_player_sfx = $AudioStreamPlayer2D
 
-
 var picked := false
 var hitted_enemy := false
 
@@ -27,9 +26,9 @@ func _ready() -> void:
 
 func _activate_effect():
 	current_effect.activate()
-	var random_index = rng.randi() % current_effect.sfx.size() - 1
-	audio_player_sfx.set_stream(load(current_effect.sfx[random_index]))
-	audio_player_sfx.play()
+#	var random_index = rng.randi() % current_effect.sfx.size() - 1
+#	audio_player_sfx.set_stream(load(current_effect.sfx[random_index]))
+#	audio_player_sfx.play()
 	_set_random_effect()
 
 func _set_random_effect():

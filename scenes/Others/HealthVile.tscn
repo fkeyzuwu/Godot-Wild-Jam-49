@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Tiles/TinyTiles/Tiles/tile_0113.png" type="Texture" id=1]
 [ext_resource path="res://assets/Tiles/TinyTiles/Tiles/tile_0115.png" type="Texture" id=2]
-[ext_resource path="res://scripts/HealthVile.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Others/HealthVile.gd" type="Script" id=3]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
