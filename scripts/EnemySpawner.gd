@@ -24,7 +24,7 @@ func spawn_enemy() -> void:
 	enemies.append(enemy)
 	
 	world.current_stage.add_child(enemy)
-	var random_spawn_point = world.current_stage.enemy_spawn_points[0]
+	var random_spawn_point = world.current_stage.get_random_spawn_point()
 	enemy.global_position = random_spawn_point.global_position
 	#later make this random spawn point
 	
