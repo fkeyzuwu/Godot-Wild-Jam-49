@@ -14,6 +14,8 @@ export var health := 5
 export var on_fire_time = 12
 var fire = false
 
+signal on_enemy_killed(enemy)
+
 signal path_changed(path)
 
 func _ready() -> void:
@@ -37,8 +39,11 @@ func take_damage(damage: int):
 	health -= damage
 	print("enemy health: " + str(health))
 	if health <= 0:
-		queue_free()
+		die()
 
+func die():
+	emit_signal("on_enemy_killed", self)
+	queue_free()
 
 func on_fire(damage:int):
 	fire = true

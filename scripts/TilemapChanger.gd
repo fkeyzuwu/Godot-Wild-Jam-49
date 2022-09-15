@@ -1,9 +1,10 @@
 extends Node2D
+class_name GameWorld
 
 var file_names = []
 var stage_path = "res://scenes/Stages/"
-var current_stage: Node2D
-var next_stage: Node2D
+var current_stage: Stage
+var next_stage: Stage
 var last_index_file = -1
 var stage_spawn_pos = Vector2(0, 180)
 
@@ -26,8 +27,6 @@ func _ready() -> void:
 	player.global_position = Vector2(100, 100)
 	current_stage.add_child(artifact)
 	artifact.global_position = Vector2(250, 100)
-	current_stage.add_child(enemy)
-	enemy.global_position = Vector2(260, 130)
 	
 	TimeManager.tilemap_timer.connect("timeout", self, "switch_next_stage")
 
@@ -48,7 +47,7 @@ func _get_files(path):
 
 	return files	
 	
-func load_random_stage() -> Node2D:
+func load_random_stage() -> Stage:
 	var random_index = rng.randi() % file_names.size() - 1
 	while random_index == last_index_file: #dont load the same scene twice
 		random_index = rng.randi() % file_names.size() - 1

@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Enemy.gd"
 }, {
+"base": "Node2D",
+"class": "GameWorld",
+"language": "GDScript",
+"path": "res://scripts/TilemapChanger.gd"
+}, {
 "base": "TileMap",
 "class": "InteractiveTilemap",
 "language": "GDScript",
@@ -34,6 +39,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
 }, {
+"base": "Position2D",
+"class": "SpawnPoint",
+"language": "GDScript",
+"path": "res://scenes/SpawnPoint.gd"
+}, {
+"base": "Node",
+"class": "Stage",
+"language": "GDScript",
+"path": "res://scripts/Stage.gd"
+}, {
 "base": "Area2D",
 "class": "WaterTile",
 "language": "GDScript",
@@ -43,8 +58,11 @@ _global_script_class_icons={
 "ArtifactEffect": "",
 "ElectricEffect": "",
 "Enemy": "",
+"GameWorld": "",
 "InteractiveTilemap": "",
 "Player": "",
+"SpawnPoint": "",
+"Stage": "",
 "WaterTile": ""
 }
 
