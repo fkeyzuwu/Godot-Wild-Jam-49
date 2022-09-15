@@ -4,7 +4,7 @@
 [ext_resource path="res://resources/TileSets/Tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://resources/TileSets/StageBackgroundTileMap.tres" type="TileSet" id=3]
 
-[node name="Stage" type="Node2D"]
+[node name="Stage2" type="Node2D"]
 
 [node name="YSort" type="YSort" parent="."]
 

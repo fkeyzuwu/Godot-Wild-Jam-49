@@ -2,12 +2,10 @@ extends TileMap
 class_name InteractiveTilemap
 
 export(Dictionary) var TILE_SCENES : = {
-	0: preload("res://scenes/TilemapItems/Spikes.tscn"),
-	1: preload("res://scenes/TilemapItems/Water.tscn"),
-	2: preload("res://scenes/TilemapItems/MetalTile.tscn"),
-	3: preload("res://scenes/TilemapItems/WoodboxTile.tscn"),
-	4: preload("res://scenes/TilemapItems/MetalboxTile.tscn"),
-	5: preload("res://scenes/TilemapItems/NaviTile.tscn")
+	0: preload("res://scenes/TilemapItems/Old/Spikes.tscn"),
+	1: preload("res://scenes/TilemapItems/Old/Water.tscn"),
+	2: preload("res://scenes/TilemapItems/Old/MetalTile.tscn"),
+	3: preload("res://scenes/TilemapItems/Old/WoodboxTile.tscn"),
 }
 
 onready var half_cell_size = cell_size * 0.5
