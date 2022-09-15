@@ -46,7 +46,7 @@ func _get_files(path):
 
 	dir.list_dir_end()
 
-	return files
+	return files	
 	
 func load_random_stage() -> Node2D:
 	var random_index = rng.randi() % file_names.size() - 1
