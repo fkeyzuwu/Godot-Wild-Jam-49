@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/Tiles/WaterTiles/water_elec5.jpg" type="Texture" id=6]
 [ext_resource path="res://assets/Tiles/WaterTiles/water_elec6.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/Tiles/WaterTiles/water_elec7.jpg" type="Texture" id=8]
-[ext_resource path="res://scripts/Tilemap Scripts/Water.gd" type="Script" id=9]
+[ext_resource path="res://scripts/Tilemap Scripts/WaterTilemap.gd" type="Script" id=9]
 [ext_resource path="res://resources/TileSets/16x16_navpoly.tres" type="NavigationPolygon" id=10]
 
 [sub_resource type="RectangleShape2D" id=3]

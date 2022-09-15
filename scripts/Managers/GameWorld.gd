@@ -1,12 +1,16 @@
 extends Node2D
 class_name GameWorld
 
-var file_names = []
-var stage_path = "res://scenes/Stages/"
+var stages := [
+	preload("res://scenes/Stages/Large_stage1.tscn"),
+	preload("res://scenes/Stages/Large_stage2.tscn"),
+	preload("res://scenes/Stages/Large_stage3.tscn")
+]
+
 var current_stage: Stage
 var next_stage: Stage
-var last_index_file = -1
-var stage_spawn_pos = Vector2(0, 180)
+var last_stage_index = -1
+var stage_spawn_pos = Vector2(0, 640)
 
 var rng  = RandomNumberGenerator.new()
 
@@ -16,7 +20,6 @@ var enemy: Enemy = preload("res://scenes/Entities/Enemy.tscn").instance()
 
 func _ready() -> void:
 	rng.randomize()
-	file_names = _get_files(stage_path)
 	
 	current_stage = load_random_stage()
 	next_stage = load_random_stage()
@@ -31,32 +34,13 @@ func _ready() -> void:
 	
 	TimeManager.tilemap_timer.connect("timeout", self, "switch_next_stage")
 
-	
-func _get_files(path):
-	var files = []
-	var dir = Directory.new()
-	dir.open(path)
-	dir.list_dir_begin()
 
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif not file.begins_with("."):
-			files.append(file)
-
-	dir.list_dir_end()
-
-	return files	
-	
 func load_random_stage() -> Stage:
-	var random_index = rng.randi() % file_names.size() - 1
-	while random_index == last_index_file: #dont load the same scene twice
-		random_index = rng.randi() % file_names.size() - 1
-	var scene = load(stage_path + file_names[random_index])
-	last_index_file = random_index
-	
-	var stage = scene.instance()
+	var random_index = rng.randi() % stages.size() - 1
+	while random_index == last_stage_index: #dont load the same scene twice
+		random_index = rng.randi() % stages.size() - 1
+	last_stage_index = random_index
+	var stage = stages[random_index].instance()
 	add_child(stage)
 	return stage
 	

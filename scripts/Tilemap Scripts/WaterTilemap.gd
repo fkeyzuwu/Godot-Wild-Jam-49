@@ -1,5 +1,5 @@
 extends Area2D
-class_name WaterTile
+class_name WaterTilemap
 onready var elec_collision = $ElecArea/ElecCollision
 onready var water_collision = $WaterCollision
 onready var sprite = $Sprite
