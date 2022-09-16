@@ -101,7 +101,9 @@ func set_invincible(value: bool):
 func die():
 	.die()
 	emit_signal("on_player_death")
-	queue_free()
+	visible = false
+	set_process(false)
+	#maybe later change 
 
 func set_on_fire(value: bool):
 	if !invincible:
@@ -123,7 +125,3 @@ func electrocute(damage: int):
 func _toggle_vile_visible(state: bool):
 	for vile in health_viles.get_children():
 		vile.visible = state
-
-func die():
-	visible = false
-	set_process(false)

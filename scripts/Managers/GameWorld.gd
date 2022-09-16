@@ -2,9 +2,10 @@ extends Node2D
 class_name GameWorld
 
 var stages := [
-	preload("res://scenes/Stages/Large_stage1.tscn"),
-	preload("res://scenes/Stages/Large_stage2.tscn"),
-	preload("res://scenes/Stages/Large_stage3.tscn")
+	preload("res://scenes/Stages/LStage_1_Pacman.tscn"),
+	preload("res://scenes/Stages/LStage_2_GoRiver.tscn"),
+	preload("res://scenes/Stages/LStage_3_BomberStyle.tscn"),
+	preload("res://scenes/Stages/LStage_4_Ring.tscn")
 ]
 
 var current_stage: Stage
