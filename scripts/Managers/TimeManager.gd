@@ -17,9 +17,3 @@ func _ready() -> void:
 	tilemap_timer.one_shot = false
 	add_child(tilemap_timer)
 	tilemap_timer.start()
-	
-	effect_timer.connect("timeout", self, "debug", ["effect_timer"])
-	tilemap_timer.connect("timeout", self, "debug", ["tilemap_timer"])
-	
-func debug(timer: String):
-	print(timer + " emited")

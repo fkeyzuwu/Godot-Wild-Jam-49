@@ -8,7 +8,6 @@ func _ready() -> void:
 	._ready()
 	color = Color(0.980392, 1, 0.301961)
 	animation = "Electric_Buildup"
-	sfx_path = sfx_path + "/" + name
 
 func activate():
 	print("electric")
@@ -16,9 +15,9 @@ func activate():
 	for area in areas:
 		if (area.name == "Hurtbox"):
 			if area.get_parent() is Player:
-				area.get_parent().electrocute_player(damage)
+				area.get_parent().electrocute()
 			else:
 				area.get_parent().take_damage(damage)
-		if (area.is_in_group("water") and area.electro == false):
+		if (area.is_in_group("water") and area.electrocuted == false):
 			area.electrocute()
 

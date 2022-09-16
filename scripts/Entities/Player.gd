@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Actor
 class_name Player
 
 var velocity := Vector2.ZERO
@@ -6,14 +6,11 @@ export var max_speed = 100
 export var acceleration = 500
 export var friction = 750
 
-var health = 3
 export var invincibility_time = 2
-export var on_fire_time = 7
-export var electric_speed_timer= 5
+export var electric_speed_timer = 5
 export var electric_speed_multiplier = 1.2
 
 var invincible := false
-var fire = false
 onready var health_viles = $"%Health_Viles"
 
 onready var hurtbox_collider = $"%HurtboxCollider"
@@ -32,6 +29,7 @@ signal on_player_death
 
 func _ready():
 	_toggle_vile_visible(false)
+	health = 3
 	camera.limit_left
 	camera.limit_right
 	camera.limit_top 
@@ -69,73 +67,56 @@ func _move(delta: float) -> void:
 	velocity = 	move_and_slide(velocity)
 	
 
-func take_damage(damage: int, hitter: String):
+func take_damage(damage: int):
 	if(invincible):
 		return
+	
+	.take_damage(damage)
+	set_invincible(true)
 		
-	print("took damage by " +  hitter)
+	while damage > 0:
+		var vile = health_viles.get_node("health" + var2str(health + damage))
+		vile.call_deferred("take_damage")
+		damage -= 1
 	
-	hurtbox_collider.set_deferred("disabled", true)
-	sprite.modulate.a = 0.5
-	health -= damage
-	invincible = true
+	var timer = get_tree().create_timer(invincibility_time, false)
+	yield(timer, "timeout") 
 	
-	if health <= 0:
-		die()
-	else:
+	set_invincible(false)
+	
+func set_invincible(value: bool):
+	invincible = value
+	
+	if invincible:
+		hurtbox_collider.set_deferred("disabled", true)
+		sprite.modulate.a = 0.5	
 		call_deferred("_toggle_vile_visible", true)
-		
-		while damage > 0:
-			var vile = health_viles.get_node("health" + var2str(health + damage))
-			vile.call_deferred("take_damage")
-			damage -= 1
-		
-		var timer = get_tree().create_timer(invincibility_time, false)
-		yield(timer, "timeout") 
-		
+	else:
 		hurtbox_collider.set_deferred("disabled", false)
 		sprite.modulate.a = 1
 		_toggle_vile_visible(false)
-		invincible = false
 
 func die():
+	.die()
 	emit_signal("on_player_death")
 	queue_free()
 
-func on_fire(damage:int):
-	if not invincible:
-		fire = true
-		var timer = get_tree().create_timer(on_fire_time, false)
-		yield(timer, "timeout")
-		if is_on("water"):
-			fire = false
-		while fire: 
-			print("toasty")
-			take_damage(damage, "fire")
-			timer = get_tree().create_timer(on_fire_time, false)
-			yield(timer, "timeout")
-			if is_on("water"):
-				fire = false
+func set_on_fire(value: bool):
+	if !invincible:
+		.set_on_fire(value)
 
-func electrocute_player(damage):
-	print("electrocute")
+func electrocute():
 	if is_on("metal"):
-		max_speed*= electric_speed_multiplier
-		acceleration*= electric_speed_multiplier
+		max_speed *= electric_speed_multiplier
+		acceleration *= electric_speed_multiplier
+		
 		var timer = get_tree().create_timer(electric_speed_timer, false)
 		yield(timer, "timeout")
-		max_speed*= (1/electric_speed_multiplier)
-		acceleration*= (1/electric_speed_multiplier)
+		
+		max_speed *= (1 / electric_speed_multiplier)
+		acceleration *= (1 / electric_speed_multiplier)
 	else:
-		take_damage(damage, "electric")
-
-func is_on(group_name:String) -> bool:
-	var areas = feet_area.get_overlapping_areas()
-	for area in areas:
-		if area.is_in_group(group_name):
-			print("Im on: " +group_name)
-			return true
-	return false
+		take_damage(1)
 
 func _toggle_vile_visible(state: bool):
 	for vile in health_viles.get_children():

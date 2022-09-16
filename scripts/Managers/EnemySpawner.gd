@@ -17,7 +17,6 @@ func _ready() -> void:
 	TimeManager.tilemap_timer.connect("timeout", self, "on_tilemap_changed")
 
 func spawn_enemy() -> void:
-	print("enemies size: " + str(enemies.size()))
 	if enemies.size() == max_enemies:
 		return
 	
@@ -36,4 +35,3 @@ func on_enemy_killed(enemy: Enemy) -> void:
 func on_tilemap_changed():
 	max_enemies += 1
 	spawn_timer.wait_time -= 0.2
-	print("max enemies = " + str(max_enemies))
