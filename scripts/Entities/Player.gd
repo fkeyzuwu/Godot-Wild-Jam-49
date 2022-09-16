@@ -123,3 +123,7 @@ func electrocute(damage: int):
 func _toggle_vile_visible(state: bool):
 	for vile in health_viles.get_children():
 		vile.visible = state
+
+func die():
+	visible = false
+	set_process(false)
