@@ -2,7 +2,7 @@ extends ArtifactEffect
 class_name ElectricEffect
 
 var timer
-export var damage = 2
+export var damage = 1
 
 func _ready() -> void:
 	._ready()
@@ -14,10 +14,8 @@ func activate():
 	var areas = get_overlapping_areas()
 	for area in areas:
 		if (area.name == "Hurtbox"):
-			if area.get_parent() is Player:
-				area.get_parent().electrocute()
-			else:
-				area.get_parent().take_damage(damage)
-		if (area.is_in_group("water") and area.electrocuted == false):
-			area.electrocute()
+			if area.get_parent() is Actor:
+				area.get_parent().electrocute(damage)
+		elif (area.is_in_group("water") and area.electrocuted == false):
+			area.set_electrocute(true)
 

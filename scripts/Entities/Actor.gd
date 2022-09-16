@@ -15,8 +15,11 @@ func _ready() -> void:
 func set_on_fire(value: bool):
 	if is_on_fire == value:
 		return
-		
-	is_on_fire = value
+	
+	if is_on("water"):
+		is_on_fire = false
+	else:
+		is_on_fire = value
 	
 	if is_on_fire:
 		fire_damage_timer.connect("timeout", self, "take_damage", [1])
@@ -29,8 +32,8 @@ func set_on_fire(value: bool):
 		print(self.name + " is not on fire")
 		#stop burning animation
 	
-func electrocute():
-	take_damage(1)
+func electrocute(damage):
+	take_damage(damage)
 	#do electrocute effect
 
 func is_on(group_name: String) -> bool:

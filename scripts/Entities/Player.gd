@@ -75,8 +75,10 @@ func take_damage(damage: int):
 	set_invincible(true)
 		
 	while damage > 0:
-		var vile = health_viles.get_node("health" + var2str(health + damage))
-		vile.call_deferred("take_damage")
+		var vile = health_viles.get_node_or_null("health" + var2str(health + damage))
+		if vile != null:
+			vile.call_deferred("take_damage")
+			
 		damage -= 1
 	
 	var timer = get_tree().create_timer(invincibility_time, false)
@@ -105,7 +107,7 @@ func set_on_fire(value: bool):
 	if !invincible:
 		.set_on_fire(value)
 
-func electrocute():
+func electrocute(damage: int):
 	if is_on("metal"):
 		max_speed *= electric_speed_multiplier
 		acceleration *= electric_speed_multiplier
@@ -116,7 +118,7 @@ func electrocute():
 		max_speed *= (1 / electric_speed_multiplier)
 		acceleration *= (1 / electric_speed_multiplier)
 	else:
-		take_damage(1)
+		take_damage(damage)
 
 func _toggle_vile_visible(state: bool):
 	for vile in health_viles.get_children():
