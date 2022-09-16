@@ -4,11 +4,12 @@ class_name Enemy
 onready var navi_agent = $NavigationAgent2D
 onready var player = get_parent().get_node("Player")
 var did_arrive = false
+var path :Array
 
 var move_direction : Vector2
 var velocity : Vector2
-export var max_speed = 50
-export var acceleration = 500
+export var max_speed = 30
+export var acceleration = 300
 
 export var health := 500
 export var on_fire_time = 12
@@ -21,14 +22,17 @@ func _ready() -> void:
 	#Navigation
 
 func _process(delta):
-	_move()
+	if player:
+		generate_path()
+		navigate()
 	
 
-func _move():
-	navi_agent.set_target_location(get_player_location())
-	var move_direction = position.direction_to(navi_agent.get_next_location())
-	velocity = move_direction* max_speed
-	navi_agent.set_velocity(velocity) 
+#func _move():
+#	path.remove(0)
+#	navi_agent.set_target_location(path[0])
+#	move_direction = position.direction_to(navi_agent.get_next_location())
+#	velocity = move_direction* max_speed
+#	navi_agent.set_velocity(velocity) 
 
 func arrived_at_location() -> bool:
 	return navi_agent.is_navigation_finished()
@@ -68,3 +72,17 @@ func get_player_location():
 func _on_NavigationAgent2D_velocity_computed(safe_velocity):
 	if not arrived_at_location():
 		velocity = move_and_slide(safe_velocity)
+
+func navigate():
+	if path.size()> 0:
+		navi_agent.set_target_location(path[1])
+		move_direction = global_position.direction_to(navi_agent.get_next_location())
+		velocity = move_direction* max_speed
+		velocity = move_and_slide(velocity) 
+		navi_agent.set_velocity(velocity)
+		
+		if global_position == path[0]:
+			path.pop_front()
+
+func generate_path():
+	path = Navigation2DServer.map_get_path(navi_agent.get_navigation_map(), global_position, get_player_location(), false)

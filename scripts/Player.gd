@@ -79,7 +79,7 @@ func take_damage(damage: int, hitter: String):
 	invincible = true
 	
 	if health <= 0:
-		queue_free()
+		die()
 	else:
 		call_deferred("_toggle_vile_visible", true)
 		
@@ -134,3 +134,7 @@ func is_on(group_name:String) -> bool:
 func _toggle_vile_visible(state: bool):
 	for vile in health_viles.get_children():
 		vile.visible = state
+
+func die():
+	visible = false
+	set_process(false)
